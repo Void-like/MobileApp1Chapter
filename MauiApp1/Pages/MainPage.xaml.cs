@@ -62,7 +62,7 @@ namespace MauiApp1
               $"Вы уверены, что хотите изменить  автора {SelectedMovies.Name}?", "Да", "Нет");
                 if (result)
                 {
-                    if (String.IsNullOrEmpty(TitleText.Text) && String.IsNullOrEmpty(DiscriptionText.Text) && String.IsNullOrEmpty(GenreList.SelectedItem.ToString())) 
+                    if (String.IsNullOrEmpty(TitleText.Text) || String.IsNullOrEmpty(DiscriptionText.Text) || String.IsNullOrEmpty(GenreList.SelectedItem.ToString())) 
                     {
 
 

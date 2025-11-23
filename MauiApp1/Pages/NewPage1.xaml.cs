@@ -81,7 +81,7 @@ public partial class NewPage1 : ContentPage
           $"Вы уверены, что хотите изменить  автора {SelectedAuthor.Name}?", "Да", "Нет");
             if (result)
             {
-                if (String.IsNullOrEmpty(Name.Text) && String.IsNullOrEmpty(SecondName.Text) && String.IsNullOrEmpty(gender.SelectedItem.ToString()))
+                if (String.IsNullOrEmpty(Name.Text) || String.IsNullOrEmpty(SecondName.Text) || String.IsNullOrEmpty(ThirtyName.Text) || String.IsNullOrEmpty(gender.SelectedItem.ToString()))
                 {
 
 

@@ -147,9 +147,9 @@ public partial class NewPage2 : ContentPage
     private async void OnChangeClicked(object sender, EventArgs e)
     {
         
-        if (SelectedAuthor == null || SelectedMovie == null)
+        if (SelectedAuthor == null || SelectedMovie == null|| SelectedMovieAuthor == null)
         {
-            await DisplayAlert("Ошибка", "Не выбран элемент", "OK");
+            await DisplayAlert("Ошибка", "Не выбран элемент или не выбраны фильмы или автора", "OK");
     
         }
         else

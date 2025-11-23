@@ -58,9 +58,27 @@ namespace MauiApp1
 
             if (SelectedMovies != null)
             {
-                await db.ChangeMovie(SelectedMovies.Id, TitleText.Text, DiscriptionText.Text, DiscriptionDate.Date, OcenochkaReal, GenreList.SelectedItem.ToString(), SliderMinutes.Value);
-                await DisplayAlert("Успех", "Киношка поменялась", "Емае");
-                Tablichka();
+                bool result = await DisplayAlert("Изменение",
+              $"Вы уверены, что хотите изменить  автора {SelectedMovies.Name}?", "Да", "Нет");
+                if (result)
+                {
+                    if (String.IsNullOrEmpty(TitleText.Text) && String.IsNullOrEmpty(DiscriptionText.Text) && String.IsNullOrEmpty(GenreList.SelectedItem.ToString())) 
+                    {
+
+
+                        await DisplayAlert("Ошибка", "Не все данные заполнены", "ок");
+                    }
+                    else
+                    {
+                        await db.ChangeMovie(SelectedMovies.Id, TitleText.Text, DiscriptionText.Text, DiscriptionDate.Date, OcenochkaReal, GenreList.SelectedItem.ToString(), SliderMinutes.Value);
+                        await DisplayAlert("Успех", "Киношка поменялась", "Емае");
+                        Tablichka();
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Ошибка", "Вы отменили изменения", "ок");
+                }
             }
             else
             {

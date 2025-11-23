@@ -146,14 +146,24 @@ public partial class NewPage2 : ContentPage
 
     private async void OnChangeClicked(object sender, EventArgs e)
     {
+        
         if (SelectedAuthor == null || SelectedMovie == null)
         {
             await DisplayAlert("Ошибка", "Не выбран элемент", "OK");
+    
         }
         else
         {
-         await db.ListMoviesChange(SelectedMovieAuthor.Id, SelectedAuthor.Id, SelectedMovie.Id);
-         await DisplayAlert("Успех", "Связь изменена", "OK");
+            bool result = await DisplayAlert("Изменение",$"Вы уверены, что хотите изменить связь  {SelectedMovieAuthor.Id}?", "Да", "Нет");
+            if (result)
+            {
+                await db.ListMoviesChange(SelectedMovieAuthor.Id, SelectedAuthor.Id, SelectedMovie.Id);
+                await DisplayAlert("Успех", "Связь изменена", "OK");
+            }
+            else
+            {
+                await DisplayAlert("Ошибка", "Вы отменили изменения", "OK");
+            }
         }
         Tablichka();
     }

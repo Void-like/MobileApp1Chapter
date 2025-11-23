@@ -74,11 +74,30 @@ public partial class NewPage1 : ContentPage
      
     }
     public async void OnChangeClicked(object sender, EventArgs e)
-    { 
+    {
         if (SelectedAuthor != null)
         {
-            await db.ChangeAuthor(SelectedAuthor.Id, Name.Text, SecondName.Text, ThirtyName.Text ,BirthDayText.Date,gender.SelectedItem.ToString(), OcenochkaReal, LiveOrDie.IsToggled);
-            await DisplayAlert("Успех", "Автор изменен", "Ок");
+            bool result = await DisplayAlert("Изменение",
+          $"Вы уверены, что хотите изменить  автора {SelectedAuthor.Name}?", "Да", "Нет");
+            if (result)
+            {
+                if (String.IsNullOrEmpty(Name.Text) && String.IsNullOrEmpty(SecondName.Text) && String.IsNullOrEmpty(gender.SelectedItem.ToString()))
+                {
+
+
+                    await DisplayAlert("Ошибка", "Не все данные заполнены", "ок");
+                }
+                else
+                {
+                    await db.ChangeAuthor(SelectedAuthor.Id, Name.Text, SecondName.Text, ThirtyName.Text, BirthDayText.Date, gender.SelectedItem.ToString(), OcenochkaReal, LiveOrDie.IsToggled);
+                    await DisplayAlert("Успех", "Данные автора изменены", "ок");
+                    Tablichka();
+                }
+            }
+            else
+            {
+                await DisplayAlert("Ошибка", "Вы отменили изменения", "ок");
+            }
         }
         else
         {

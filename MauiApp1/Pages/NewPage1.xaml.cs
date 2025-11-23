@@ -125,4 +125,9 @@ public partial class NewPage1 : ContentPage
     {
         await Navigation.PushModalAsync(new MainPage());
     }
+
+    private void OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+    {
+        numberStepper.Text = StepperSelect.Value.ToString();
+    }
 }

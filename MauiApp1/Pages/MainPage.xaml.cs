@@ -129,6 +129,16 @@ namespace MauiApp1
         {
             await Navigation.PushModalAsync(new NewPage2(db));
         }
+
+        private void OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            numberStepper.Text = StepperSelect.Value.ToString();
+        }
+
+        private void OnSliderValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            SliderNumber.Text = SliderMinutes.Value.ToString();
+        }
     }
 
     }

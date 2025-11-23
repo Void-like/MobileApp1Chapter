@@ -21,7 +21,7 @@
         
         
         <!--табличка-->
-        <ListView ItemsSource="{Binding MainTablichka}" SelectedItem="{Binding SelectedMovieAuthor}" x:Name="Tablyxa">
+        <ListView ItemsSource="{Binding MainTablichka}" SelectedItem="{Binding SelectedMovieAuthor}" x:Name="Tablyxa" SelectionMode="Single">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

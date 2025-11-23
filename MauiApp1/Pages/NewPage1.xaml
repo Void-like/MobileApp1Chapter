@@ -16,7 +16,8 @@
             <Label Text="День рождения"/>
             <DatePicker x:Name="BirthDayText"/>
             <Label Text="Оценочка"/>
-            <Stepper Maximum="5" Minimum="0" Increment="0.1" Value="{Binding OcenochkaReal}"/>
+            <Label  x:Name="numberStepper" Text="0"/>
+            <Stepper Maximum="5" Minimum="0" Increment="0.1"  ValueChanged="OnStepperValueChanged" x:Name="StepperSelect" />
             <Label Text="Пол" />
             <Picker x:Name="gender" ItemsSource="{Binding Genres}" />
             <Label Text="Духовное состояние"/>

@@ -13,14 +13,15 @@
         <Label Text="Описание"/>
         <Entry x:Name="DiscriptionText"/>
         <Label Text="Рейтинг" />
-        <Stepper  Maximum="5" Minimum="0" Increment="0.1" Value="{Binding OcenochkaReal}"  />
-        <Label  Text="{Binding OcenochkaReal}"/>
-        <Label Text="Жанр"/>
+        <Label  x:Name="numberStepper" Text="0"/>
+            <Stepper  Maximum="5" Minimum="0" Increment="0.1"  ValueChanged="OnStepperValueChanged" x:Name="StepperSelect" />
+            <Label Text="Жанр"/>
         <Picker ItemsSource="{Binding Genres}" x:Name="GenreList"/>
         <Label Text="Дата выхода"/>
         <DatePicker  x:Name="DiscriptionDate"/>
         <Label Text="Минуты"/>
-        <Slider Minimum="0" Maximum="360" x:Name="SliderMinutes"/>
+        <Label Text="0" x:Name="SliderNumber"/>
+        <Slider Minimum="0" Maximum="360" x:Name="SliderMinutes" ValueChanged="OnSliderValueChanged"/>
             
             <!--кнопопчки-->
         <Button  Text="Сохранить" Clicked="Button_Clicked_Movie"/>

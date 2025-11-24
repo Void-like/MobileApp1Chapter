@@ -13,7 +13,7 @@ public partial class NewPage1 : ContentPage
     public ObservableCollection<Author> AuthorTablichkaUpdate { get; set; } = new ObservableCollection<Author>();
     public List<Author> AuthorTablichka { get; set; } = new List<Author>();
     public List<string> Genres { get; set; } = new List<string> { "Мужчина", "Девушка" };
-    public double OcenochkaReal { get; set; }
+   
     public DBFile db;
     public Author SelectedAuthor { get; set; }
     public NewPage1(DBFile db)
@@ -33,7 +33,7 @@ public partial class NewPage1 : ContentPage
         }
         else
         {
-            await db.AddAuthor(Name.Text, SecondName.Text, ThirtyName.Text, BirthDayText.Date, gender.SelectedItem.ToString(), OcenochkaReal, LiveOrDie.IsToggled);
+            await db.AddAuthor(Name.Text, SecondName.Text, ThirtyName.Text, BirthDayText.Date, gender.SelectedItem.ToString(), StepperSelect.Value, LiveOrDie.IsToggled);
             await DisplayAlert("Успех", "Автор добавлен", "Ок");
         }
         Tablichka();
@@ -89,7 +89,7 @@ public partial class NewPage1 : ContentPage
                 }
                 else
                 {
-                    await db.ChangeAuthor(SelectedAuthor.Id, Name.Text, SecondName.Text, ThirtyName.Text, BirthDayText.Date, gender.SelectedItem.ToString(), OcenochkaReal, LiveOrDie.IsToggled);
+                    await db.ChangeAuthor(SelectedAuthor.Id, Name.Text, SecondName.Text, ThirtyName.Text, BirthDayText.Date, gender.SelectedItem.ToString(), StepperSelect.Value, LiveOrDie.IsToggled);
                     await DisplayAlert("Успех", "Данные автора изменены", "ок");
                     Tablichka();
                 }
